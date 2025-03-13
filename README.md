@@ -164,4 +164,22 @@ H --> I[End]
   }
 }
 
+IAM Policy for Step Fucntion
+
+ '{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:InvokeFunction"
+      ],
+      "Resource": [
+       
+        "arn:aws:lambda:*:*:function:analyze-cwl-logs",
+        "arn:aws:lambda:*:*:function:generate-cwl-summary"
+      ]
+    }
+  ]
+}'
 
