@@ -49,7 +49,7 @@ Lambda Configuration
 - Timeout: 15 minutes
 - Handler: lambda_function.lambda_handler
 
-IAM Permissions  Required
+IAM Permissions Required for AWS Lambda
 
 Required permissions:
 ```json
