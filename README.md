@@ -15,8 +15,7 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 │   DynamoDB   │◀───────────┴─────────────────────┘
 └──────────────┘
 
-
-## Features
+Features
 - Analyzes up to 30 days of CloudWatch logs
 - Provides detailed analysis of system health, performance, and security
 - Uses Claude 3 Sonnet for advanced pattern recognition
@@ -24,7 +23,7 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 - Handles large log volumes with efficient pagination
 - Includes trend analysis and recommendations
 
-## Prerequisites
+Prerequisites
 - AWS Account with appropriate permissions
 - Python 3.8 or later
 - AWS CLI configured
@@ -35,22 +34,22 @@ It processes logs over a 30-day period and generates comprehensive insights abou
   - Amazon CloudWatch Logs
 
 
-## Configuration
+Configuration
 
-### Environment Variables
-#### Requires two DynamoDB tables.
+Environment Variables
+Requires two DynamoDB tables.
 
 WINDOWS_TABLE=<your-windows-table-name>
 RESULTS_TABLE=<your-results-table-name>
 
-### Lambda Configuration
+Lambda Configuration
 
 - Runtime: Python 3.8+
 - Memory: 1024 MB (minimum recommended)
 - Timeout: 15 minutes
 - Handler: lambda_function.lambda_handler
 
-### IAM Permissions  Required
+IAM Permissions  Required
 
 Required permissions:
 ```json
