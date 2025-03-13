@@ -171,5 +171,4 @@ IAM Policy for Step Function
       ]
     }
   ]
-}'}
-```
+}'
