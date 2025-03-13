@@ -82,7 +82,7 @@ Required permissions:
 
 
 
-Step Functions Workflow
+Step Functions Code
 
 The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
 
@@ -154,7 +154,7 @@ The Step Functions workflow orchestrates the log analysis process by dividing th
 
 IAM Policy for Step Function
 
-```text
+
 {
  '{
   "Version": "2012-10-17",
