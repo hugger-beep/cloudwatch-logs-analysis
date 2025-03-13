@@ -89,12 +89,12 @@ Required permissions:
 
 
 
-## Step Functions Workflow
+Step Functions Workflow
 
-### Overview
+Overview
 The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
 
-### Workflow Architecture
+Workflow Architecture
 
  A[Start] --> B[Initialize Analysis] B --> C[Create Time Windows] C --> D[Process Windows in Parallel]  D --> E[Lambda: Analyze Logs] E --> F[Store Results] F --> G[Check Completion] G -->|Not Complete| D G -->|Complete| H[Generate Summary]
 H --> I[End]
