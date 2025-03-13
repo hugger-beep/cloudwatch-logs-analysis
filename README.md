@@ -98,3 +98,6 @@ Workflow Architecture
 
  A[Start] --> B[Initialize Analysis] B --> C[Create Time Windows] C --> D[Process Windows in Parallel]  D --> E[Lambda: Analyze Logs] E --> F[Store Results] F --> G[Check Completion] G -->|Not Complete| D G -->|Complete| H[Generate Summary]
 H --> I[End]
+
+
+
