@@ -99,5 +99,69 @@ Workflow Architecture
  A[Start] --> B[Initialize Analysis] B --> C[Create Time Windows] C --> D[Process Windows in Parallel]  D --> E[Lambda: Analyze Logs] E --> F[Store Results] F --> G[Check Completion] G -->|Not Complete| D G -->|Complete| H[Generate Summary]
 H --> I[End]
 
+{
+  "Comment": "CloudWatch Log Analysis State Machine",
+  "StartAt": "Initialize",
+  "States": {
+    "Initialize": {
+      "Type": "Pass",
+      "Next": "CreateTimeWindows",
+      "Parameters": {
+        "execution_id.$": "$$.Execution.Id",
+        "start_time.$": "$.start_time",
+        "end_time.$": "$.end_time",
+        "log_group_name.$": "$.log_group_name"
+      }
+    },
+    "CreateTimeWindows": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:create-time-windows",
+      "Next": "ProcessWindows",
+      "Parameters": {
+        "execution_id.$": "$.execution_id",
+        "start_time.$": "$.start_time",
+        "end_time.$": "$.end_time",
+        "window_size_hours": 24
+      }
+    },
+    "ProcessWindows": {
+      "Type": "Map",
+      "ItemsPath": "$.windows",
+      "MaxConcurrency": 10,
+      "Iterator": {
+        "StartAt": "AnalyzeLogs",
+        "States": {
+          "AnalyzeLogs": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:analyze-cwl-logs",
+            "End": true,
+            "Parameters": {
+              "execution_id.$": "$.execution_id",
+              "window_id.$": "$.window_id",
+              "log_group_name.$": "$$.Map.Item.log_group_name"
+            },
+            "Retry": [
+              {
+                "ErrorEquals": ["States.TaskFailed"],
+                "IntervalSeconds": 30,
+                "MaxAttempts": 3,
+                "BackoffRate": 2.0
+              }
+            ]
+          }
+        }
+      },
+      "Next": "GenerateSummary"
+    },
+    "GenerateSummary": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:generate-cwl-summary",
+      "End": true,
+      "Parameters": {
+        "execution_id.$": "$.execution_id"
+      }
+    }
+  }
+}
 
 
