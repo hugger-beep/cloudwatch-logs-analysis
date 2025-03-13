@@ -1,7 +1,7 @@
 # AWS CloudWatch Logs Analysis with Claude 3
 
 This project provides an automated solution for analyzing CloudWatch Logs using Amazon Bedrock's Claude 3 Sonnet model. It consists of two Lambda functions and a Step Function for orchestration. The result ins stored in DynamoDB.
-It processes logs over a 30-day period and generates comprehensive insights about system health, performance, and security.
+It processes logs over a 30-day period and generates comprehensive insights about system health, performance, unusual patterns, critical issues and security.
 
 ## Architecture Overview
 
