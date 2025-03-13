@@ -7,12 +7,12 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 
 ```ascii
 ┌──────────────┐     ┌─────────────┐     ┌────────────────┐
-│  CloudWatch  │     │             │     │   Processor    │
-│    Logs      │────▶│ Initializer │────▶│    Lambda     │
+│  CloudWatch  │     │             │     │   generate     │
+│    Logs      │────▶│ analyze     │────▶│    Lambda    │
 └──────────────┘     │   Lambda    │     └────────────────┘
-                     └─────────────┘              │
-┌──────────────┐            │                     │
-│   DynamoDB   │◀───────────┴─────────────────────┘
+                     └─────────────┘             │
+┌──────────────┐            │                    │
+│   DynamoDB   │◀───────────────────────────────┘
 └──────────────┘
 
 Features
