@@ -5,16 +5,6 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 
 ## Architecture Overview
 
-```ascii
-┌──────────────┐     ┌─────────────┐     ┌────────────────┐
-│  CloudWatch  │     │             │     │   generate     │
-│    Logs      │────▶│ analyze     │────▶│    Lambda    │
-└──────────────┘     │   Lambda    │     └────────────────┘
-                     └─────────────┘             │
-┌──────────────┐            │                    │
-│   DynamoDB   │◀───────────────────────────────┘
-└──────────────┘
-
 Features
 - Analyzes up to 30 days of CloudWatch logs
 - Provides detailed analysis of system health, performance, and security
