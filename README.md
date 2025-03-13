@@ -164,7 +164,7 @@ H --> I[End]
   }
 }
 
-IAM Policy for Step Fucntion
+IAM Policy for Step Function
 
  '{
   "Version": "2012-10-17",
