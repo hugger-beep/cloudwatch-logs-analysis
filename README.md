@@ -16,7 +16,7 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 └──────────────┘
 
 
-## Features
+# Features
 
 - Analyzes CloudWatch logs over extended periods (up to 30 days)
 - Generates structured analysis reports with multiple sections
