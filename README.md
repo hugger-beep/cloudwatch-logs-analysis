@@ -152,7 +152,8 @@ The Step Functions workflow orchestrates the log analysis process by dividing th
   }
 }
 
-Configuration
+
+IAM Policy for Step Function
 
  '{
   "Version": "2012-10-17",
