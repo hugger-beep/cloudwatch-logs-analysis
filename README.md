@@ -30,9 +30,9 @@ Environment Variables
 
 Requires two DynamoDB tables.
 
-WINDOWS_TABLE=<your-windows-table-name>
+WINDOWS_TABLE = <your-windows-table-name>
 
-RESULTS_TABLE=<your-results-table-name>
+RESULTS_TABLE = <your-results-table-name>
 
 
 Lambda Configuration
