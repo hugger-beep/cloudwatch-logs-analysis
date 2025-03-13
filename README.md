@@ -15,70 +15,25 @@ It processes logs over a 30-day period and generates comprehensive insights abou
 │   DynamoDB   │◀───────────┴─────────────────────┘
 └──────────────┘
 
-## Features
-
-🔍 Automated log analysis using Claude 3 Sonnet
-
-📊 Comprehensive analysis sections including:
-
-Overall Health Status
-
-Critical Issues
-
-Performance Metrics
-
-Security Events
-
-Unusual Patterns
-
-System Health Indicators
-
-Recommendations
-
-Long-term Trends
-
-⚡ Efficient log processing with pagination
-
-📈 Support for 30-day analysis windows
-
-🔄 Automatic handling of large datasets
-
-💾 Persistent storage of analysis results
-
-Prerequisites
-AWS Account with appropriate permissions
-
-Python 3.8 or later
-
-AWS CLI configured
-
-Required AWS Services:
-
-AWS Lambda
-
-Amazon DynamoDB
-
-Amazon Bedrock
-
-CloudWatch Logs
 
 ## Features
-
-- Analyzes CloudWatch logs over extended periods (up to 30 days)
-- Generates structured analysis reports with multiple sections
+- Analyzes up to 30 days of CloudWatch logs
+- Provides detailed analysis of system health, performance, and security
+- Uses Claude 3 Sonnet for advanced pattern recognition
+- Stores results in DynamoDB for historical tracking
 - Handles large log volumes with efficient pagination
-- Provides statistical summaries of analyzed logs
-- Stores results in DynamoDB for future reference
-- Includes error handling and status tracking
-
+- Includes trend analysis and recommendations
 
 ## Prerequisites
+- AWS Account with appropriate permissions
+- Python 3.8 or later
+- AWS CLI configured
+- Required AWS services:
+  - AWS Lambda
+  - Amazon Bedrock
+  - Amazon DynamoDB
+  - Amazon CloudWatch Logs
 
-- AWS Lambda environment
-- Amazon Bedrock access
-- DynamoDB tables for windows and results
-- CloudWatch Logs access
-- IAM permissions configured
 
 ## Configuration
 
