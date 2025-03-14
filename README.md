@@ -1,11 +1,11 @@
 # AWS CloudWatch Logs Analysis with Claude 3
 
-This project provides an automated solution for analyzing CloudWatch Logs using Amazon Bedrock's Claude 3 Sonnet model. It consists of two Lambda functions and a Step Function for orchestration. The result ins stored in DynamoDB.
-It processes logs over a 30-day period and generates comprehensive insights about system health, performance, unusual patterns, critical issues and security.
+## Overview
+This project provides an automated solution for analyzing CloudWatch Logs using Amazon Bedrock's Claude 3 Sonnet model. It consists of two Lambda functions and a Step Function for orchestration. The result is stored in DynamoDB.
 
-## Architecture Overview
+The solution processes logs over a 30-day period and generates comprehensive insights about system health, performance, unusual patterns, critical issues and security.
 
-Features
+## Features
 - Analyzes up to 30 days of CloudWatch logs
 - Provides detailed analysis of system health, performance, and security
 - Uses Claude 3 Sonnet for advanced pattern recognition
@@ -13,7 +13,7 @@ Features
 - Handles large log volumes with efficient pagination
 - Includes trend analysis and recommendations
 
-Prerequisites
+## Prerequisites
 - AWS Account with appropriate permissions
 - Python 3.8 or later
 - AWS CLI configured
@@ -23,29 +23,29 @@ Prerequisites
   - Amazon DynamoDB
   - Amazon CloudWatch Logs
 
+## Configuration
 
-Configuration
-
-Environment Variables
-
-Requires two DynamoDB tables.
-
+### Environment Variables
+Requires two DynamoDB tables:
+```bash
 WINDOWS_TABLE = your-windows-table-name
-
 RESULTS_TABLE = your-results-table-name
 
 
 Lambda Configuration
+Runtime: Python 3.8+
 
-- Runtime: Python 3.8+
-- Memory: 1024 MB (minimum recommended)
-- Timeout: 15 minutes
-- Handler: lambda_function.lambda_handler
+Memory: 1024 MB (minimum recommended)
 
-IAM Permissions Required for AWS Lambda
+Timeout: 15 minutes
 
-Required permissions:
-```json
+Handler: lambda_function.lambda_handler
+
+IAM Permissions
+Lambda IAM Role
+<details>
+<summary>Click to view/copy Lambda IAM Policy</summary>
+
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -80,9 +80,15 @@ Required permissions:
 }
 
 
+</details>
 
+Step Functions Workflow
+Overview
+The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
 
-Step Functions Code - The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
+State Machine Definition
+<details>
+<summary>Click to view/copy Step Functions State Machine</summary>
 
 {
   "Comment": "CloudWatch Log Analysis State Machine",
@@ -140,33 +146,11 @@ Step Functions Code - The Step Functions workflow orchestrates the log analysis 
     },
     "GenerateSummary": {
       "Type": "Task",
-      "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:generate-cwl-summary",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:generate-summary",
       "End": true,
       "Parameters": {
         "execution_id.$": "$.execution_id"
       }
     }
   }
-}
-
-IAM Policy for Step Function:
-
-<details>
-<summary>Click to view/IAM Policy for Step Function:</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "lambda:InvokeFunction"
-            ],
-            "Resource": [
-                "arn:aws:lambda:*:*:function:analyze-cwl-logs",
-                "arn:aws:lambda:*:*:function:generate-cwl-summary"
-            ]
-        }
-    ]
 }
