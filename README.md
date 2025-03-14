@@ -152,7 +152,6 @@ Step Functions Code - The Step Functions workflow orchestrates the log analysis 
 
 IAM Policy for Step Function:
 
-```json
 {
     "Version": "2012-10-17",
     "Statement": [
