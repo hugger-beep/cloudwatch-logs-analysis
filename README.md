@@ -187,5 +187,6 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=5,WriteCapacityUnits=5
 
+</details>
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
