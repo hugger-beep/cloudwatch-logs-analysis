@@ -161,7 +161,7 @@ State Machine Definition
 Deployment
 Quick Setup
 <details>
-<summary>Click to view/copy deployment commands</summary>
+<summary>Click to view/copy deployment commands to create the two DynamoDB tables</summary>
 
 # Create DynamoDB tables
 
