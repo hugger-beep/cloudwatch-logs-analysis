@@ -154,3 +154,35 @@ State Machine Definition
     }
   }
 }
+
+
+</details>
+
+Deployment
+Quick Setup
+<details>
+<summary>Click to view/copy deployment commands</summary>
+
+# Create DynamoDB tables
+
+aws dynamodb create-table \
+    --table-name your-windows-table-name \
+    --attribute-definitions \
+        AttributeName=execution_id,AttributeType=S \
+        AttributeName=window_id,AttributeType=S \
+    --key-schema \
+        AttributeName=execution_id,KeyType=HASH \
+        AttributeName=window_id,KeyType=RANGE \
+    --provisioned-throughput \
+        ReadCapacityUnits=5,WriteCapacityUnits=5
+
+aws dynamodb create-table \
+    --table-name your-results-table-name \
+    --attribute-definitions \
+        AttributeName=execution_id,AttributeType=S \
+        AttributeName=window_id,AttributeType=S \
+    --key-schema \
+        AttributeName=execution_id,KeyType=HASH \
+        AttributeName=window_id,KeyType=RANGE \
+    --provisioned-throughput \
+        ReadCapacityUnits=5,WriteCapacityUnits=5
