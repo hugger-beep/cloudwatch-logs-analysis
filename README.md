@@ -186,3 +186,7 @@ aws dynamodb create-table \
         AttributeName=window_id,KeyType=RANGE \
     --provisioned-throughput \
         ReadCapacityUnits=5,WriteCapacityUnits=5
+
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
