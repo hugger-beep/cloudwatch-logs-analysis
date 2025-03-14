@@ -30,7 +30,7 @@ Requires two DynamoDB tables:
 ```bash
 WINDOWS_TABLE = your-windows-table-name
 RESULTS_TABLE = your-results-table-name
-
+```
 
 Lambda Configuration
 Runtime: Python 3.8+
