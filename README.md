@@ -4,6 +4,8 @@
 This project provides an automated solution for analyzing CloudWatch Logs using Amazon Bedrock's Claude 3 Sonnet model. It consists of two Lambda functions and a Step Function for orchestration. The result is stored in DynamoDB.
 
 The solution processes logs over a 30-day period and generates comprehensive insights about system health, performance, unusual patterns, critical issues and security.
+## Note: change the names to match your environment
+
 
 ## Features
 - Analyzes up to 30 days of CloudWatch logs
@@ -28,7 +30,7 @@ The solution processes logs over a 30-day period and generates comprehensive ins
 ### Environment Variables
 Requires two DynamoDB tables:
 ```bash
-WINDOWS_TABLE = your-windows-table-name
+WINDOWS_TABLE = your-windows-table-name   
 RESULTS_TABLE = your-results-table-name
 ```
 
