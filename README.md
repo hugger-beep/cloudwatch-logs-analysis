@@ -34,7 +34,7 @@ WINDOWS_TABLE = your-windows-table-name
 RESULTS_TABLE = your-results-table-name
 ```
 
-Lambda Configuration
+# Lambda Configuration
 Runtime: Python 3.8+
 
 Memory: 1024 MB (minimum recommended)
@@ -43,7 +43,7 @@ Timeout: 15 minutes
 
 Handler: lambda_function.lambda_handler
 
-IAM Permissions
+# IAM Permissions
 Lambda IAM Role
 <details>
 <summary>Click to view/copy Lambda IAM Policy</summary>
@@ -84,11 +84,11 @@ Lambda IAM Role
 
 </details>
 
-Step Functions Workflow
+# Step Functions Workflow
 Overview
 The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
 
-State Machine Definition
+## State Machine Definition
 <details>
 <summary>Click to view/copy Step Functions State Machine</summary>
 
