@@ -84,7 +84,6 @@ Required permissions:
 
 Step Functions Code - The Step Functions workflow orchestrates the log analysis process by dividing the 30-day period into manageable windows and coordinating the Lambda function executions.
 
-```json
 {
   "Comment": "CloudWatch Log Analysis State Machine",
   "StartAt": "Initialize",
